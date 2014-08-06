@@ -4,4 +4,18 @@
 	<p>{{ tagline }}</p>
 
 
+    <div>
+        <table class="table">
+          <tr>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+          </tr>
+          <tr ng-repeat="nerd in nerds">
+            <td>{{nerd.nome}}</td>
+            <td>{{nerd.sobrenome}}</td>
+          </tr>
+        </table>
+    </div>
+
+
 </div>
