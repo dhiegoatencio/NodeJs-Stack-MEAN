@@ -1,8 +1,13 @@
-angular.module('NerdCtrl', []).controller('NerdController', function($scope) {
+angular.module('NerdCtrl', [])
+    .controller('NerdController', ['$scope', 'Nerd', function($scope, Nerd){
+
 
 	$scope.tagline = 'Esta mensagem NERD, está vindo do arquivo NerdController.js';
 
-    $scope.nerds = [
+    $scope.nerds = Nerd.get();
+
+/*
+=     [
         {
             "nome": "Hendrix", 
             "sobrenome": "Dhiego"
@@ -10,5 +15,6 @@ angular.module('NerdCtrl', []).controller('NerdController', function($scope) {
         {
             "nome": "Nei", 
             "sobrenome": "Dias"
-        }];
-});
+        }];*/
+
+}]);
