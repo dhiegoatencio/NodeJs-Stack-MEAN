@@ -7,15 +7,13 @@ module.exports = function(app) {
 	// sample api route
 	app.get('/api/nerds', function(req, res) {
 
-
-		res.json([{"nome": "Dhiego", "sobrenome": "Hendrix"}]/*[{
-		              "nome": "Hendrix", 
-		              "sobrenome": "Dhiego"
-		          }, 
-		          {
-		              "nome": "Nei", 
-		              "sobrenome": "Dias"
-		        }]*/);
+		res.json([{"nome": "Dhiego" , "sobrenome":"Hendrix"}, 
+		          {"nome": "Nei"    , "sobrenome": "Dias"  },
+		          {"nome": "Bruna"  , "sobrenome": "Cunha" },
+		          {"nome": "Thales"  , "sobrenome": "Adler" },
+		          {"nome": "Carlove" , "sobrenome": "Cheio de amor"},
+		          {"nome": "Flayner" , "sobrenome": "Velhinho"},
+		          {"nome": "Nhé"     , "sobrenome": "Polar"  }]);
 	});
 
 	// route to handle creating (app.post)
