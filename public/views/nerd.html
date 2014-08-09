@@ -3,6 +3,17 @@
 
 	<p>{{ tagline }}</p>
 
+  <form ng-submit="salvar()" class="form-inline" role="form">
+      <div class="form-group">
+        <input type="text" ng-model="nerd.nome" class="form-control" placeholder="Digite o nome">
+      </div>
+      <div class="form-group">
+        <input type="text" ng-model="nerd.sobrenome" class="form-control" placeholder="Digite o sobrenome">
+      </div>
+      <button type="submit" class="btn btn-default">Adicionar Nerd</button>
+  </form>
+  <br>
+
 
     <div>
         <table class="table">
@@ -10,9 +21,9 @@
             <th>Nome</th>
             <th>Sobrenome</th>
           </tr>
-          <tr ng-repeat="nerd in nerds">
-            <td>{{nerd.nome}}</td>
-            <td>{{nerd.sobrenome}}</td>
+          <tr ng-repeat="n in nerds">
+            <td>{{n.nome}}</td>
+            <td>{{n.sobrenome}}</td>
           </tr>
         </table>
     </div>

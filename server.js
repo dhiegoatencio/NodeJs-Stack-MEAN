@@ -6,14 +6,20 @@ var app            = express();
 var mongoose       = require('mongoose');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
+var fs 	           = require('fs');
+
+// carrega todos os modulelos em models
+fs.readdirSync(__dirname + '/app/models').forEach(function(filename){
+	if (~filename.indexOf('.js')) require(__dirname + '/app/models/' + filename);
+});
 
 // configuration ===========================================
   
 // config files
 var db = require('./config/db');
-
 var port = process.env.PORT || 8080; // set our port
-// mongoose.connect(db.url); // connect to our mongoDB database (uncomment after you enter in your own credentials in config/db.js)
+
+mongoose.connect(db.url); // connect to our mongoDB database (uncomment after you enter in your own credentials in config/db.js)
 
 // get all data/stuff of the body (POST) parameters
 app.use(bodyParser.json()); // parse application/json 
@@ -24,7 +30,7 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 
 // routes ==================================================
-require('./app/routes')(app); // configure our routes
+require('./app/routes')(app, mongoose); // configure our routes
 
 // start app ===============================================
 app.listen(port);                   // startup our app at http://localhost:8080

@@ -1,19 +1,28 @@
-module.exports = function(app) {
+module.exports = function(app, mongoose) {
 
 	// server routes ===========================================================
 	// handle things like api calls
 	// authentication routes
 
 	// sample api route
-	app.get('/api/nerds', function(req, res) {
 
-		res.json([{"nome": "Dhiego" , "sobrenome":"Hendrix"}, 
-		          {"nome": "Nei"    , "sobrenome": "Dias"  },
-		          {"nome": "Bruna"  , "sobrenome": "Cunha" },
-		          {"nome": "Thales"  , "sobrenome": "Adler" },
-		          {"nome": "Carlove" , "sobrenome": "Cheio de amor"},
-		          {"nome": "Flayner" , "sobrenome": "Velhinho"},
-		          {"nome": "Nhé"     , "sobrenome": "Polar"  }]);
+	app.post('/api/nerds', function(req, res){
+		var Nerd = mongoose.model('nerds');
+		var nerd = new Nerd(req.body);
+		console.log("Salvando nerd");
+
+		nerd.save(function(err){
+			console.log(req.body);
+		});		
+	});
+
+
+	app.get('/api/nerds', function(req, res) {
+		mongoose.model('nerds').find(function(err, nerds){
+			res.json(nerds);
+		});
+        /*res.json([{"nome": "Dhiego" , "sobrenome":"Hendrix"}, 
+		          {"nome": "Nhé"     , "sobrenome": "Polar"  }]);*/
 	});
 
 	// route to handle creating (app.post)
