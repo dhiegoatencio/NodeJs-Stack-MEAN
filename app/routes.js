@@ -19,7 +19,7 @@ module.exports = function(app, mongoose) {
 
 	app.get('/api/nerds', function(req, res) {
 		mongoose.model('nerds').find(function(err, nerds){
-			res.json(nerds);
+			res.json(nerds); //retorna todos os nerds
 		});
 	});
 
