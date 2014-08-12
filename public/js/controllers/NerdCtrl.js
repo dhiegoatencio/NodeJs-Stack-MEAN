@@ -10,11 +10,17 @@ angular.module('NerdCtrl', []).controller('NerdController', ['$scope', 'Nerd', f
     });;
 
     $scope.salvar = function() {
-    	Nerd.create($scope.nerd).success(function(data, status, headers, config) {
+    	Nerd.create($scope.nerd).success(function(data) {
     		$scope.nerds.unshift($scope.nerd); //Add o nerd no começo da lista
             $scope.nerd = "";
     	}).error(function(){
             $scope.tagline = "Erro ao gravar nerd";
+        });
+    };
+
+    $scope.delete = function(id) {
+        Nerd.delete(id).success(function() {
+            $scope.nerd = "";
         });
     };
 

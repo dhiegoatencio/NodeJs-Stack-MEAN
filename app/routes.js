@@ -12,7 +12,7 @@ module.exports = function(app, mongoose) {
 			if (!err) {
 				res.send(200); //gravou corretamente
 			} else {
-				res.send(404); //ocorreu algum erro
+				res.send(err); //ocorreu algum erro
 			};
 		});
 	});
@@ -23,9 +23,17 @@ module.exports = function(app, mongoose) {
 		});
 	});
 
-	// route to handle creating (app.post)
-	// route to handle delete (app.delete)
+	app.delete('/api/nerds/:id', function(req, res){
+		var Nerd = mongoose.model('nerds');
 
+		Nerd.remove({_id: req.params.id}, function(err, docs){
+			if (!err) {
+				res.send(200);
+			} else {
+				res.json(err);
+			};
+		});
+	});
 
 
 	// frontend routes =========================================================

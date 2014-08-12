@@ -20,10 +20,14 @@
         <tr>
           <th>Nome</th>
           <th>Sobrenome</th>
+          <th></th>
         </tr>
         <tr ng-repeat="n in nerds">
           <td>{{n.nome}}</td>
           <td>{{n.sobrenome}}</td>
+          <td><button ng-click="delete(n._id)" class="glyphicon glyphicon-trash"></button>
+
+            <!-- <button ng-click="delete(nerd._id)">delete</button>--></td>
         </tr>
       </table>
   </div>
