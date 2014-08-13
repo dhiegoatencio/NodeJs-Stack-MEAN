@@ -4,7 +4,4 @@ angular.module('GeekCtrl', [])
 
 
 	$scope.tagline = 'The square root of life is pi!';	
-
-    
-    Geek.delete(1);
 }]);

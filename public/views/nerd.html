@@ -5,7 +5,7 @@
 
   <form ng-submit="salvar()" class="form-inline" role="form">
       <div class="form-group">
-        <input type="text" ng-model="nerd.nome" class="form-control" placeholder="Digite o nome">
+        <input type="text" focus-on="nome" ng-model="nerd.nome" class="form-control" placeholder="Digite o nome" autofocus>
       </div>
       <div class="form-group">
         <input type="text" ng-model="nerd.sobrenome" class="form-control" placeholder="Digite o sobrenome">
@@ -25,9 +25,7 @@
         <tr ng-repeat="n in nerds">
           <td>{{n.nome}}</td>
           <td>{{n.sobrenome}}</td>
-          <td><button ng-click="delete(n._id)" class="glyphicon glyphicon-trash"></button>
-
-            <!-- <button ng-click="delete(nerd._id)">delete</button>--></td>
+          <td><button ng-click="delete($index)" class="glyphicon glyphicon-trash"></button></td>
         </tr>
       </table>
   </div>

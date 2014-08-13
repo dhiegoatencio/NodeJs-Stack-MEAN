@@ -30,7 +30,7 @@ module.exports = function(app, mongoose) {
 			if (!err) {
 				res.send(200);
 			} else {
-				res.json(err);
+				res.send(err);
 			};
 		});
 	});
