@@ -10,20 +10,26 @@ angular.module('NerdCtrl', []).controller('NerdController', ['$scope', 'Nerd', f
     });;
 
     $scope.salvar = function() {
-    	Nerd.create($scope.nerd).success(function(data) {
-    		$scope.nerds.push($scope.nerd); //Add o nerd no começo da lista
-            $scope.nerd = "";
-            focus('nome');
-    	}).error(function(){
-            $scope.tagline = "Erro ao gravar nerd";
-        });
+        if ($scope.nerd != "") {
+        	Nerd.create($scope.nerd).success(function(data) {
+        		$scope.nerds.push($scope.nerd); //Add o nerd no começo da lista
+                $scope.nerd = "";
+                focus('nome');
+        	}).error(function(){
+                $scope.tagline = "Erro ao gravar nerd";
+            });
+        };
     };
 
-    $scope.delete = function(idx) {
-        var idNerd = $scope.nerds[idx]._id;
+    $scope.pesquisar = function(){
+        $scope.nerd = ''; // implementar pesquisa
+    };
+
+    $scope.delete = function(arrayIndex) {
+        var idNerd = $scope.nerds[arrayIndex]._id;
 
         Nerd.delete(idNerd).success(function() {
-            $scope.nerds.splice(idx, 1);
+            $scope.nerds.splice(arrayIndex, 1);
         });
     };
 
