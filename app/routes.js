@@ -23,6 +23,20 @@ module.exports = function(app, mongoose) {
 		});
 	});
 
+	// Pesquisa de nerds
+    app.get('/api/nerds/:pesq', function(req, res){
+		var pesq = '{' +  req.params.pesq + '}';
+    	console.log('teste pesq = ' + pesq);  	
+
+    	mongoose.model('nerds').find(pesq, function(err, nerds){
+    		if (!err) {
+    			res.json(nerds);
+    		} else {
+    			res.send(err);
+    		}
+    	});
+    });
+
 	app.delete('/api/nerds/:id', function(req, res){
 		var Nerd = mongoose.model('nerds');
 

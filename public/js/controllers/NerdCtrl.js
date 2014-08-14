@@ -12,7 +12,7 @@ angular.module('NerdCtrl', []).controller('NerdController', ['$scope', 'Nerd', f
     $scope.salvar = function() {
         if ($scope.nerd != "") {
         	Nerd.create($scope.nerd).success(function(data) {
-        		$scope.nerds.push($scope.nerd); //Add o nerd no começo da lista
+                $scope.nerds.push($scope.nerd); //Add o nerd no começo da lista
                 $scope.nerd = "";
                 focus('nome');
         	}).error(function(){
@@ -22,7 +22,11 @@ angular.module('NerdCtrl', []).controller('NerdController', ['$scope', 'Nerd', f
     };
 
     $scope.pesquisar = function(){
-        $scope.nerd = ''; // implementar pesquisa
+        if ($scope.nerd != "") {
+            Nerd.pesquisa($scope.nerd).success(function(data){
+                $scope.nerds = data;
+            });
+        };
     };
 
     $scope.delete = function(arrayIndex) {
