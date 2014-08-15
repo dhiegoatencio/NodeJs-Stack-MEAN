@@ -6,8 +6,8 @@ angular.module('NerdService', []).factory('Nerd', ['$http', function($http) {
 			return $http.get('/api/nerds');
 		},
 
-		pesquisa : function(nerdPesquisa) {
-			return $http.get('/api/nerds/' + nerdPesquisa);
+		pesquisa : function(nerd) {
+			return $http.get('/api/nerds/' + nerd.nome + '-' + nerd.sobrenome);
 		},
 
 		// call to POST and create a new nerd
