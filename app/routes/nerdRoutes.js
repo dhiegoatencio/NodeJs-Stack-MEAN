@@ -1,10 +1,6 @@
 module.exports = function(app, mongoose) {
-	// server routes ===========================================================
-	// handle things like api calls
-	// authentication routes
-	// sample api route
-
-	var Nerd = require('./repository/nerdRepository');
+	var Nerd = require('../repository/nerdRepository');
+	Nerd.mongoose = mongoose;
 
 	app.post('/api/nerds', function(req, res){
 		var Nerd = mongoose.model('nerds');
@@ -27,7 +23,7 @@ module.exports = function(app, mongoose) {
 
 	// Pesquisa de nerds
     app.get('/api/nerds/:nome-:sobrenome', function(req, res){
-    	Nerd.Find(mongoose, req.params.nome, req.params.sobrenome, function(err, nerds){
+    	Nerd.Find(req.params.nome, req.params.sobrenome, function(err, nerds){
     		if (!err) {
     			res.json(nerds);
     		} else {
@@ -46,12 +42,5 @@ module.exports = function(app, mongoose) {
 				res.send(err);
 			};
 		});
-	});
-
-
-	// frontend routes =========================================================
-	// route to handle all angular requests
-	app.get('*', function(req, res) {
-		res.sendfile('./public/views/index.html'); // load our public/index.html file
 	});
 };

@@ -7,6 +7,13 @@ angular.module('NerdService', []).factory('Nerd', ['$http', function($http) {
 		},
 
 		pesquisa : function(nerd) {
+			if (nerd.nome == ""){
+				nerd.nome = undefined;
+			};
+			if (nerd.sobrenome == "") {
+				nerd.sobrenome = undefined;
+			};
+
 			return $http.get('/api/nerds/' + nerd.nome + '-' + nerd.sobrenome);
 		},
 

@@ -1,15 +1,23 @@
-var Find = function(mongoose, pNome, sobrenome, callback) {
+var mongoose = require('mongoose');
 
-	console.log(pNome + "  - " + sobrenome);
+var Find = function(pNome, pSobrenome, callback) {
 
-	if (!!pNome) {
-		console.log('entrou ');
-		mongoose.model('nerds').find({nome: pNome}, callback);
+	console.log(pNome + "-" + pSobrenome);
+
+	var model = mongoose.model('nerds');
+
+	if (pNome !== "undefined") {
+		model.find({nome: pNome}, callback);
+	} else if (pSobrenome !== "undefined") {
+		model.find({sobrenome: pSobrenome}, callback);
+	} else if (pNome !== "undefined" && pSobrenome !== "undefined") {
+		model.find({nome: pNome, sobrenome: pSobrenome}, callback);
 	} else {
-		console.log('else ');
-		//mongoose.model('nerds').find({},callback);
+		model.find({}, callback);
 	};
 
 };
 
+
+module.exports.mongoose = mongoose;
 module.exports.Find = Find;

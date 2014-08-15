@@ -30,7 +30,9 @@ app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-M
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 
 // routes ==================================================
-require('./app/routes')(app, mongoose); // configure our routes
+fs.readdirSync(__dirname + '/app/routes').forEach(function(filename){
+	if (~filename.indexOf('.js')) require(__dirname + '/app/routes/' + filename)(app, mongoose); //Adiciona todas as rotas da pasta passando o app e mongoose
+});
 
 // start app ===============================================
 app.listen(port);                   // startup our app at http://localhost:8080
