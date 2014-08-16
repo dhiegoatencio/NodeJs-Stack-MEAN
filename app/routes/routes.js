@@ -1,4 +1,4 @@
-module.exports = function(app, mongoose) {
+module.exports = function(app) {
 	// server routes ===========================================================
 	// handle things like api calls
 	// authentication routes

@@ -31,7 +31,7 @@ app.use(express.static(__dirname + '/public')); // set the static files location
 
 // routes ==================================================
 fs.readdirSync(__dirname + '/app/routes').forEach(function(filename){
-	if (~filename.indexOf('.js')) require(__dirname + '/app/routes/' + filename)(app, mongoose); //Adiciona todas as rotas da pasta passando o app e mongoose
+	if (~filename.indexOf('.js')) require(__dirname + '/app/routes/' + filename)(app);
 });
 
 // start app ===============================================

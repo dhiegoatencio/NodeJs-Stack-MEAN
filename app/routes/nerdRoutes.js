@@ -1,12 +1,8 @@
-module.exports = function(app, mongoose) {
+module.exports = function(app) {
 	var Nerd = require('../repository/nerdRepository');
-	Nerd.mongoose = mongoose;
 
 	app.post('/api/nerds', function(req, res){
-		var Nerd = mongoose.model('nerds');
-		var nerd = new Nerd(req.body);
-
-		nerd.save(function(err){
+		Nerd.Save(req.body, function(err){
 			if (!err) {
 				res.send(200); //gravou corretamente
 			} else {
@@ -16,7 +12,7 @@ module.exports = function(app, mongoose) {
 	});
 
 	app.get('/api/nerds', function(req, res) {
-		mongoose.model('nerds').find(function(err, nerds){
+		Nerd.FindAll(function(err, nerds){
 			res.json(nerds); //retorna todos os nerds
 		});
 	});
@@ -33,9 +29,7 @@ module.exports = function(app, mongoose) {
     });
 
 	app.delete('/api/nerds/:id', function(req, res){
-		var Nerd = mongoose.model('nerds');
-
-		Nerd.remove({_id: req.params.id}, function(err, docs){
+		Nerd.RemoveById(req.params.id, function(err, docs){
 			if (!err) {
 				res.send(200);
 			} else {

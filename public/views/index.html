@@ -16,7 +16,6 @@
 	<script src="libs/angular-route/angular-route.min.js"></script>
 
 	<!-- ANGULAR CUSTOM -->
-	<script src="js/angularDirectives/focusOn.js"></script>
 	<script src="js/controllers/MainCtrl.js"></script>
 	<script src="js/controllers/NerdCtrl.js"></script>
 	<script src="js/services/NerdService.js"></script>
@@ -29,19 +28,16 @@
 <div class="container">
 
 	<!-- HEADER -->
-	<nav ng-show="MostraMenu()" class="navbar navbar-inverse">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="/">Stencil: Node and Angular</a>
-		</div>
+	<nav ng-show="MostraMenu()" class="navbar navbar-default" role="navigation">
 
 		<!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
 		<ul class="nav navbar-nav">
+			<li><a href="/">Home</a></li>
 			<li><a href="/nerds">Nerds</a></li>
 			<li><a href="/geeks">Geeks</a></li>
+			<li><a href="/login">Login</a></li>
 		</ul>
 	</nav>
-
-	<a href="/login">Login</a>
 
 	<!-- ANGULAR DYNAMIC CONTENT -->
 	<div ng-view></div>

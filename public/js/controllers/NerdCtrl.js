@@ -14,7 +14,6 @@ angular.module('NerdCtrl', []).controller('NerdController', ['$scope', 'Nerd', f
         	Nerd.create($scope.nerd).success(function(data) {
                 $scope.nerds.push($scope.nerd); //Add o nerd no começo da lista
                 $scope.nerd = "";
-                focus('nome');
         	}).error(function(){
                 $scope.tagline = "Erro ao gravar nerd";
             });
@@ -22,11 +21,10 @@ angular.module('NerdCtrl', []).controller('NerdController', ['$scope', 'Nerd', f
     };
 
     $scope.pesquisar = function(){
-        if ($scope.nerd != "") {
-            Nerd.pesquisa($scope.nerd).success(function(data){
-                $scope.nerds = data;
-            });
-        };
+        Nerd.pesquisa($scope.nerd).success(function(data){
+            $scope.nerds = data;
+            $scope.nerd = ""; // limpa o campo de pesquisa
+        });
     };
 
     $scope.delete = function(arrayIndex) {
