@@ -3,13 +3,13 @@
 
   <form class="form-inline text-center" >
       <div class="form-group">
-        <input type="text" ng-focus-on="nome" ng-model="nerd.nome" class="form-control" placeholder="Digite o nome" autofocus>
+        <input type="text" focus-on="nome" ng-model="nerd.nome" class="form-control" placeholder="Digite o nome" autofocus>
       </div>
       <div class="form-group">
         <input type="text" ng-model="nerd.sobrenome" class="form-control" placeholder="Digite o sobrenome">
       </div>
-      <button ng-click="salvar()"    class="btn btn-default">Adicionar</button>
-      <button ng-click="pesquisar()" class="btn btn-primary">Pesquisar</button>
+      <button ng-click="salvar($event)" class="btn btn-default">Adicionar</button>
+      <button ng-click="pesquisar()"    class="btn btn-primary">Pesquisar</button>
   </form>
 
   <br>

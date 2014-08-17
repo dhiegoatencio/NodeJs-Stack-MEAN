@@ -2,9 +2,9 @@ module.exports = function(app) {
 	var Nerd = require('../repository/nerdRepository');
 
 	app.post('/api/nerds', function(req, res){
-		Nerd.Save(req.body, function(err){
+		Nerd.Save(req.body, function(err, doc){
 			if (!err) {
-				res.send(200); //gravou corretamente
+				res.send(String(doc._id)); //se gravou corretamente, retorna o id como string
 			} else {
 				res.send(err); //ocorreu algum erro
 			};
@@ -29,9 +29,9 @@ module.exports = function(app) {
     });
 
 	app.delete('/api/nerds/:id', function(req, res){
-		Nerd.RemoveById(req.params.id, function(err, docs){
+		Nerd.RemoveById(req.params.id, function(err, doc){
 			if (!err) {
-				res.send(200);
+				res.json(doc);
 			} else {
 				res.send(err);
 			};
