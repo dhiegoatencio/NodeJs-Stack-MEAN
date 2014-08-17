@@ -23,7 +23,7 @@ angular.module('NerdCtrl', []).controller('NerdController',
                 $s.Alert('danger','O app não conseguiu gravar o nerd.' + msgErroPadrao + data);
             });
         } else {
-            $s.Alert('info', 'Preencha as informações do nerd.');
+            $s.Alert('info', 'Para adicionar nerd, preencha as informações do nerd.');
         };
     };
 
