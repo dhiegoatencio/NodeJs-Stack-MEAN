@@ -39,11 +39,11 @@
         </ul>
 	</nav>
 
-	<div ng-show="showAlert" class="alert alert-{{alert}} alert-dismissible" role="alert">
+	<div ng-show="showAlert" class="popup alert alert-{{alert}} alert-dismissible" role="alert">
         <button type="button" class="close" ng-click="showAlert=false"
 	            data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
 	    </button>
-	    <strong>{{alert}}!</strong> {{alertMsg}}
+	    <strong>{{alert}}!</strong>{{alertMsg}}
 	</div>
 
 	<!-- ANGULAR DYNAMIC CONTENT -->

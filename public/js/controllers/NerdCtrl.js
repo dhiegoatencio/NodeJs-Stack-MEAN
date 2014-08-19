@@ -41,7 +41,7 @@ angular.module('NerdCtrl', []).controller('NerdController',
         });
     };
 
-    $s.delete = function(arrayIndex) {
+    $s.delete = function(arrayIndex, $event) {
         var idNerd = $s.nerds[arrayIndex]._id;
 
         Nerd.delete(idNerd).success(function() {

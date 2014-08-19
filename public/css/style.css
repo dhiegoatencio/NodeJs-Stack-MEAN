@@ -3,3 +3,11 @@ nav.login .login,
 nav.nerds .nerds {
 	background-color: #C4D7E0;
 }
+
+.popup {
+	z-index: 1;
+	position: fixed;
+	width: auto;
+	top: 90%;
+	left: auto%;
+}
