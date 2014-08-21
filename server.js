@@ -29,6 +29,30 @@ app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-f
 app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 
+
+
+// Configuring Passport =======================
+var passport = require('passport');
+var expressSession = require('express-session');
+app.use(expressSession({secret: 'mySecretKey'}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function(user, done) {
+  done(null, user._id);
+});
+ 
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
+// Initialize Passport
+var initPassport = require('./app/passport/init');
+initPassport(passport);
+
+
 // routes ==================================================
 fs.readdirSync(__dirname + '/app/routes').forEach(function(filename){
 	if (~filename.indexOf('.js')) require(__dirname + '/app/routes/' + filename)(app);
