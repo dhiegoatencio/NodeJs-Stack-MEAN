@@ -38,24 +38,15 @@ app.use(expressSession({secret: 'mySecretKey'}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.serializeUser(function(user, done) {
-  done(null, user._id);
-});
- 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
-
 // Initialize Passport
 var initPassport = require('./app/passport/init');
 initPassport(passport);
 
 
 // routes ==================================================
+var isAuthenticated = require('./app/passport/isAuthenticated');
 fs.readdirSync(__dirname + '/app/routes').forEach(function(filename){
-	if (~filename.indexOf('.js')) require(__dirname + '/app/routes/' + filename)(app);
+	if (~filename.indexOf('.js')) require(__dirname + '/app/routes/' + filename)(app, passport, isAuthenticated);
 });
 
 // start app ===============================================

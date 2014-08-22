@@ -1,4 +1,4 @@
-module.exports = function(app) {
+module.exports = function(app, passport, isAuthenticated) {
 	var Nerd = require('../repository/nerdRepository');
 
 	app.post('/api/nerds', function(req, res){
