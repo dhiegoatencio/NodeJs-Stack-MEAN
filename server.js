@@ -43,6 +43,12 @@ var initPassport = require('./app/passport/init');
 initPassport(passport);
 
 
+ // Using the flash middleware provided by connect-flash to store messages in session
+ // and displaying in templates
+var flash = require('connect-flash');
+app.use(flash());
+
+
 // routes ==================================================
 var isAuthenticated = require('./app/passport/isAuthenticated');
 fs.readdirSync(__dirname + '/app/routes').forEach(function(filename){

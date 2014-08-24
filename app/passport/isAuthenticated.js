@@ -4,6 +4,6 @@ module.exports = function (req, res, next) {
 	// request and response objects
 	if (req.isAuthenticated())
 		return next();
-	// if the user is not authenticated then redirect him to the login page
-	res.sendfile('./public/views/login.html');
+
+	res.send(401, 'Efetue login'); //Não autorizado
 }
