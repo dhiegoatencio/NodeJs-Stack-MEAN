@@ -13,6 +13,7 @@ angular.module('NerdCtrl', []).controller('NerdController',
     $s.salvar = function($event) {
         if ($s.nerd != "") {
         	Nerd.create($s.nerd).success(function(data) {
+                //window.location.href = '/api/nerds';
                 $s.nerd._id = data;      // Adiciona o id gerado pelo mongo ao nerd (para funcionar o delete ou um possível edit)
                 $s.nerds.push($s.nerd);  // Add o nerd na lista da grid
                 $s.nerd = "";            // limpa os campos

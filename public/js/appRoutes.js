@@ -3,7 +3,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 	$routeProvider
 
 		// home page
-		.when('/', {
+		.when('/home', {
 			templateUrl: 'views/home.html',
 			controller: 'MainController'
 		})
@@ -20,7 +20,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: ''
 		})
 
-		.otherwise ({ redirectTo: '/' });
+		.otherwise ({ redirectTo: '/home' });
 
 	$locationProvider.html5Mode(true);
 

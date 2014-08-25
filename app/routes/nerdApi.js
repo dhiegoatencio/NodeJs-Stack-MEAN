@@ -4,9 +4,10 @@ module.exports = function(app, passport, isAuthenticated) {
 	app.post('/api/nerds', isAuthenticated, function(req, res){
 		Nerd.Save(req.body, function(err, doc){
 			if (!err) {
+				//res.redirect('www.google.com');
 				res.send(String(doc._id)); //se gravou corretamente, retorna o id como string
 			} else {
-				res.send(err); //ocorreu algum erro
+				res.send(500, err); //ocorreu algum erro
 			};
 		});
 	});
@@ -23,7 +24,7 @@ module.exports = function(app, passport, isAuthenticated) {
     		if (!err) {
     			res.json(nerds);
     		} else {
-    			res.send(err);
+    			res.send(500, err);
     		};    		
     	});
     });
@@ -33,7 +34,7 @@ module.exports = function(app, passport, isAuthenticated) {
 			if (!err) {
 				res.json(doc);
 			} else {
-				res.send(err);
+				res.send(500, err);
 			};
 		});
 	});
