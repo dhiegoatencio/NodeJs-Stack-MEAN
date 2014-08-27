@@ -2,7 +2,7 @@ module.exports = function(app, passport, isAuthenticated) {
 
 	app.get('/failure', function(req, res){
 		var msg = req.flash('message')[0]; // captura as mensagens de erro da sessão. Muitas delas vindas de login.js e signup.js
-		res.send(msg);
+		res.send(401, msg);
 	});
 
 	app.post('/api/login', passport.authenticate('login', {
@@ -26,9 +26,8 @@ module.exports = function(app, passport, isAuthenticated) {
 		res.redirect('/');
 	});	
 
-
 	app.get('/', function(req, res){
-    	res.sendfile('./public/views/acesso/login.html');
+    	res.sendfile('./public/views/passport/index.html');
 	});
 
 	app.get('/registrar', function(req, res){

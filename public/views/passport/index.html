@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<base href="/">
+	<title>Login</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- JS -->
+	<script src="libs/angular/angular.min.js"></script>
+	<script src="libs/angular-route/angular-route.min.js"></script>
+
+	<!-- ANGULAR CUSTOM -->
+	<script src="js/passport/app.js"></script>
+	<script src="js/passport/services.js"></script>
+	<script src="js/passport/LoginCtrl.js"></script>
+	<script src="js/passport/RegisterCtrl.js"></script>
+	<script src="js/passport/MainCtrl.js"></script>
+</head>
+<body ng-app="passportApp" ng-controller="MainController">
+
+	<div ng-view></div>
+
+	<div ng-show="showAlert" class="popup alert alert-{{alert}} alert-dismissible" role="alert">
+        <button type="button" class="close" ng-click="showAlert=false"
+	            data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+	    </button>
+	    <strong>{{alert}}!</strong>{{alertMsg}}
+	</div>
+</body>
