@@ -1,13 +1,16 @@
 var mongoose = require('mongoose');
 var model = mongoose.model('nerds');
+var undef = "undefined";
 
 var Find = function(pNome, pSobrenome, callback) {
 
-	if (pNome !== "undefined" && pSobrenome !== "undefined") {
+	if (pNome !== undef && pSobrenome !== undef) {
 		model.find({nome: pNome, sobrenome: pSobrenome}, callback);
-	} else if (pNome !== "undefined") {
-		model.find({nome: pNome}, callback);
-	} else if (pSobrenome !== "undefined") {
+	} else if (pNome !== undef) {
+		
+		model.find({nome: new RegExp('^'+pNome+'$', "i")}, callback);
+		//model.find({nome: pNome}, callback);
+	} else if (pSobrenome !== undef) {
 		model.find({sobrenome: pSobrenome}, callback);
 	} else {
 		model.find(callback);
