@@ -7,9 +7,7 @@ var Find = function(pNome, pSobrenome, callback) {
 	if (pNome !== undef && pSobrenome !== undef) {
 		model.find({nome: pNome, sobrenome: pSobrenome}, callback);
 	} else if (pNome !== undef) {
-		
-		model.find({nome: new RegExp('^'+pNome+'$', "i")}, callback);
-		//model.find({nome: pNome}, callback);
+		model.find({nome: new RegExp('^' + pNome,'i')}, callback); //pesquisa iniciado por (case insensitive)
 	} else if (pSobrenome !== undef) {
 		model.find({sobrenome: pSobrenome}, callback);
 	} else {
